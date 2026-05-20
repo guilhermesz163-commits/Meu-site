@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODS 7 - Energia Limpa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mesh-bg"></div>
+
+    <main class="app-wrapper">
+        <div class="glass-panel main-panel">
+            
+            <!-- TELA DE LOGIN -->
+            <section id="login-screen" class="screen active">
+                <div class="icon-glow">🌱⚡</div>
+                <h1 class="title-gradient">Energia Limpa</h1>
+                <p class="subtitle">ODS 7 Multiplayer</p>
+                
+                <div class="input-group">
+                    <input type="text" id="player-name" placeholder="Digite seu nome..." class="glass-input" autocomplete="off" maxlength="15">
+                    <button id="join-btn" class="glass-btn primary-glow">Entrar na Sala</button>
+                </div>
+            </section>
+
+            <!-- TELA DE LOBBY -->
+            <section id="lobby-screen" class="screen">
+                <div class="header-flex">
+                    <h2 class="title-gradient">Lobby</h2>
+                    <span class="pulse-text">Aguardando jogadores...</span>
+                </div>
+                
+                <div class="players-container" id="players-list">
+                    <!-- Lista de jogadores -->
+                </div>
+                
+                <button id="start-game-btn" class="glass-btn primary-glow full-width mt-20">Iniciar Partida</button>
+            </section>
+
+            <!-- TELA DE QUIZ -->
+            <section id="quiz-screen" class="screen">
+                <div class="quiz-header">
+                    <div class="badge" id="question-count">Q 1/10</div>
+                    <div class="timer-wrapper">
+                        <svg class="timer-svg" viewBox="0 0 36 36">
+                            <path class="timer-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="timer-progress" id="timer-path" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <span id="timer-display" class="timer-text">15</span>
+                    </div>
+                </div>
+
+                <h2 id="question-text" class="question-title">Pergunta aqui?</h2>
+                
+                <div id="options-container" class="options-layout">
+                    <!-- Opções serão injetadas via JavaScript -->
+                </div>
+                
+                <div id="waiting-msg" class="glass-badge hidden">Aguardando outros jogadores...</div>
+            </section>
+
+            <!-- TELA DE RESULTADO PARCIAL / PLACAR -->
+            <section id="leaderboard-screen" class="screen">
+                <div class="round-feedback" id="round-feedback">
+                    <div class="feedback-icon" id="feedback-icon">✨</div>
+                    <h2 id="feedback-title">Correto!</h2>
+                    <p id="feedback-subtitle">+10 pontos</p>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <h3 class="title-gradient small">Top Jogadores</h3>
+                <ul id="leaderboard-list" class="glass-list">
+                    <!-- Ranking dos jogadores -->
+                </ul>
+            </section>
+
+            <!-- TELA DE RESULTADO FINAL -->
+            <section id="result-screen" class="screen text-center">
+                <div class="icon-glow big">🏆</div>
+                <h2 class="title-gradient">Vencedor Final</h2>
+                
+                <div class="winner-card">
+                    <h3 id="winner-name">Ninguém</h3>
+                    <div class="points"><span id="winner-score">0</span> pts</div>
+                </div>
+                
+                <ul id="final-leaderboard-list" class="glass-list compact mt-20">
+                    <!-- Ranking final -->
+                </ul>
+                
+                <button id="restart-btn" class="glass-btn secondary-glow full-width mt-20">Voltar ao Lobby</button>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
